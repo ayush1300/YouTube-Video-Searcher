@@ -32,16 +32,15 @@
 
   <section class="jumbotron text-center">
     <div class="container">
-      <h1 class="jumbotron-heading">Search YouTube</h1>
-      <p class="lead text-muted">Get the top nine results on YouTube for your query!</p>
+      <h1 class="jumbotron-heading">Display Videos</h1>
+      <p class="lead text-muted">Get the top results from YouTube!</p>
       <form method="POST">
       <div class="input-group mb-3">
           {% csrf_token %}
           <input type="text" name="search" class="form-control" aria-label="Username">
       </div>
       <p>
-        <button type="submit" name="submit" value="search" class="btn btn-primary my-2">YouTube Search</button>
-        <button type="submit" name="submit" value="lucky" class="btn btn-secondary my-2">I'm Feeling Lucky</button>
+        <button type="submit" name="submit" value="search" class="btn btn-primary my-2">Search Videos</button>
       </p>
       </form>
     </div>
@@ -55,11 +54,9 @@
           <div class="card mb-4 shadow-sm">
             <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{ video.thumbnail }}" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"></img>
             <div class="card-body">
-              <p class="card-text">{{ video.title }}</p>
+              <a  href="{{ video.url }}" class="card-text">{{ video.title }}</a>
               <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <a type="button" href="{{ video.url }}" class="btn btn-sm btn-outline-secondary">View</a>
-                </div>
+                <small class="text-muted">{{ video.published }} </small>
                 <small class="text-muted">{{ video.duration }} mins</small>
               </div>
             </div>
