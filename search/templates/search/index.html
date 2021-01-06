@@ -33,7 +33,7 @@
   <section class="jumbotron text-center">
     <div class="container">
       <h1 class="jumbotron-heading">Display Videos</h1>
-      <p class="lead text-muted">Get the top results from YouTube!</p>
+      <p class="lead text-muted">Get the top results from YouTube</p>
       <form method="POST">
       <div class="input-group mb-3">
           {% csrf_token %}
@@ -48,6 +48,31 @@
 
   <div class="album py-5 bg-light">
     <div class="container">
+      <div class="pagination">
+          <!-- {{videos.has_previous}}
+          {{videos.number}}
+          {{videos.paginator.count}}
+          {{videos.num_pages}}
+          {{videos.paginator.page_range}}
+          {{videos.has_next}} -->
+          {% if videos.has_previous %}
+            <a href="?page=1"><<</a>
+            <a href="?page={{ videos.previous_page_number }}"><</a>  
+          {% endif %}
+          {% for num in videos.paginator.page_range %}
+            {% if videos.number == num %}    
+                <strong>{{num}}</strong>
+            {% elif num > videos.number|add:'-3' and num < videos.number|add:'3' %}
+                {{num}}
+            {% endif %}
+          {% endfor %}
+          {% if videos.has_next %}
+            
+          <a href="?page={{ videos.next_page_number }}">></a>
+          <a href="?page={{ videos.paginator.num_pages }}">>></a>
+              
+          {% endif %}
+      </div>  
       <div class="row">
         {% for video in videos %}
         <div class="col-md-4">
@@ -63,8 +88,10 @@
           </div>
         </div>
         {% endfor %}
+        <!-- <button type="submit" name="submit" value="search" class="btn btn-primary my-2" >Next Page!</button> -->
       </div>
     </div>
+     
   </div>
 
 </main>

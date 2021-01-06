@@ -3,6 +3,7 @@ from django.conf import settings
 import requests
 from isodate import parse_duration
 from operator import itemgetter
+from django.core.paginator import Paginator
 
 
 def index(request):
@@ -15,7 +16,7 @@ def index(request):
             "part": "snippet",
             "q": request.POST["search"],
             "key": settings.YOUTUBE_DATA_API_KEY,
-            "maxResults": 9,
+            "maxResults": 60,
             "type": "video"
         }
 
@@ -30,14 +31,12 @@ def index(request):
         video_params = {
             "key": settings.YOUTUBE_DATA_API_KEY,
             "part": "snippet,contentDetails",
-            "id": ','.join(video_ids)
+            "id": ','.join(video_ids),
         }
         r = requests.get(video_url, params=video_params)
-        results = r.json()["items"]
 
+        results = r.json()["items"]
         for result in results:
-            # print(parse_duration(
-            #     result["contentDetails"]["duration"]).total_seconds())
             video_data = {
                 "title": result["snippet"]["title"],
                 "published": result["snippet"]["publishedAt"],
@@ -49,7 +48,8 @@ def index(request):
             videos.append(video_data)
 
         videos = sorted(videos, key=itemgetter("published"), reverse=True)
-        print(videos)
+
+        # print(videos.__len__)
     context = {
         "videos": videos
     }
