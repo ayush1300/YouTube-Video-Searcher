@@ -47,9 +47,9 @@ def index(request):
             }
             videos.append(video_data)
 
-        videos = sorted(videos, key=itemgetter("published"), reverse=True)
+        #videos = sorted(videos, key=itemgetter("published"), reverse=True)
 
-        # print(videos.__len__)
+        print(videos)
     context = {
         "videos": videos
     }
