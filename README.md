@@ -7,7 +7,7 @@ Setup a environment  using :
 1) pip install pipenv
 2) pipenv install django
     
-Run : python manage.py runserver 8001 on your git
-Make sure that you are in correct folder before running this command
+Run : python manage.py runserver 8001 
+on your git. Make sure that you are in correct folder before running this command
 
 Go to : localhost:8001/search to get to the web app
