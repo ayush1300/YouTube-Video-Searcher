@@ -11,3 +11,5 @@ Run : python manage.py runserver 8001
 on your git. Make sure that you are in correct folder before running this command
 
 Go to : localhost:8001/search to get to the web app
+
+Type your query on the search bar to get the latest videos in reverse chronological order
