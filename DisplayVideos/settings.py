@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'background_task'
 ]
 
 MIDDLEWARE = [
@@ -121,4 +122,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-YOUTUBE_DATA_API_KEY = 'AIzaSyAhe8nvx_Eo7a0yorrtdIXCUogiq5yXxSk'
+YOUTUBE_DATA_API_KEY = 'AIzaSyCf3kLhQDmSrlvs2Ah_MV3jlg-fePJj3EY'
