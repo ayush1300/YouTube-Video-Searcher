@@ -83,7 +83,7 @@ def index(request):
             video_data["title"] = k.title
             print(video_data["url"], video_data["thumbnail"])
             videos.append(video_data)
-        # videos = sorted(videos, key=itemgetter("published"), reverse=True)
+        videos = sorted(videos, key=itemgetter("published"), reverse=True)
 
     # passing the context in render method so that can be accessed in index.html
     context = {

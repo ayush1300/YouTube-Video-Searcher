@@ -7,6 +7,8 @@ from django.core.paginator import Paginator
 from .models import Videos
 from background_task import background
 
+# background running tasks
+
 
 @background(schedule=60)
 def demo_task():
@@ -77,8 +79,3 @@ def demo_task():
         # print(v1)
         if v1.count() == 0:
             v.save()
-
-    # print(videos)
-    # passing the context in render method so that can be accessed in index.html
-
-    # return render(request, "search/index.html", context)
